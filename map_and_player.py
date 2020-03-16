@@ -13,12 +13,12 @@ class Block :
 		self.firstDraw = True   # If the first time of drawing bloc
 
 	def drawBloc(self, canvas):
-		if self.firstDraw: # If their is the first draw of the bloc 
+		if self.firstDraw: # If their is the first draw of the bloc
 			self.display = canvas.create_rectangle(
 				self.x*BLOCK_SIZE,
 				self.y*BLOCK_SIZE,
 				(self.x+1)*BLOCK_SIZE,
-				(self.y+1)*BLOCK_SIZE, 
+				(self.y+1)*BLOCK_SIZE,
 				fill=self.texture,
 				width=0)
 			self.firstDraw = False
@@ -59,9 +59,9 @@ class MapParser:
 
 
 class Player:
-	def __init__(self, gMape):
-		self.x = gMape.spawn[0]
-		self.y = gMape.spawn[1]
+	def __init__(self, gMap):
+		self.x = gMap.spawn[0]
+		self.y = gMap.spawn[1]
 		self.color = PLAYER_COLOR
 		self.firstDraw = True
 
@@ -81,37 +81,3 @@ class Player:
 				self.y*BLOCK_SIZE,
 				(self.x+1)*BLOCK_SIZE,
 				(self.y+1)*BLOCK_SIZE)
-
-
-if __name__ == '__main__':
-	gMape = MapParser(MAP_SOURCE) # Because map is an reserved word, gMap is game mape
-	player = Player(gMape)
-
-	def update():
-		global gMape, player, can
-		gMape.draw(can)
-		player.drawPlayer(can)
-
-		can.after(1000//FPS, update)
-
-	def pRight(event):
-		global player
-		player.x += PLAYER_SPEED
-
-	def pLeft(event):
-		global player
-		player.x -= PLAYER_SPEED
-
-	def quitAll(event):
-		root.quit()
-	
-	root = tk.Tk()
-	can = tk.Canvas(height=len(gMape)*BLOCK_SIZE, width=len(gMape[0])*BLOCK_SIZE)
-	can.pack()
-	
-	root.bind("<Left>", pLeft)
-	root.bind("<Right>", pRight)
-	root.bind("<Escape>", quitAll)
-	update()
-
-	root.mainloop()
