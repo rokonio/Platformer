@@ -1,7 +1,7 @@
 from map_and_player import *
 from math import ceil, floor
 
-def underBloc(gMap, player):
+def underBlock(gMap, player):
 	beetweenBlock = [ceil(player.x), floor(player.x)]
 	heighterBlock = gMap[-1][-1]
 	for y in range(ceil(player.y), len(gMap)):

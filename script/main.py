@@ -1,4 +1,5 @@
 from map_and_player import *
+from gravity_collision import *
 from option import *
 from landing_block import *
 import tkinter as tk
@@ -8,13 +9,14 @@ player = Player(gMap)
 
 def update():
 	global gMap, player, can
-	undrBlc = underBloc(gMap, player)
+	undrBlc = underBlock(gMap, player)
 	for y in range(len(gMap)):
 		for x in range(len(gMap[0])):
 			if gMap[y][x] == undrBlc:
 				gMap[y][x].texture = "red"
 			else :
-				gMap[y][x].texture = BLOC_TEXTURE[gMap[y][x].blockType]
+				gMap[y][x].texture = BLOCK_TEXTURE[gMap[y][x].blockType]
+	applyGravity(gMap, player)
 	gMap.draw(can)
 	player.drawPlayer(can)
 
@@ -28,6 +30,12 @@ def pLeft(event):
 	global player
 	player.x -= PLAYER_SPEED
 
+def pJump(event):
+	global player
+	player.velocity -= JUMP_HEIGHT*20/GRAVITY_FORCE
+
+	print("Jump !")
+
 def quitAll(event):
 	root.quit()
 
@@ -38,6 +46,7 @@ can.pack()
 root.bind("<Left>", pLeft)
 root.bind("<Right>", pRight)
 root.bind("<Escape>", quitAll)
+root.bind("<space>", pJump)
 update()
 
 root.mainloop()

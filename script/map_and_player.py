@@ -8,12 +8,12 @@ class Block :
 		self.y = y
 		self.char = char
 		self.blockType = MAP_CHARS[char]
-		self.texture = BLOC_TEXTURE[self.blockType]
-		self.collision = self.blockType in COLLISION_BLOC
-		self.firstDraw = True   # If the first time of drawing bloc
+		self.texture = BLOCK_TEXTURE[self.blockType]
+		self.collision = self.blockType in COLLISION_BLOCK
+		self.firstDraw = True   # If the first time of drawing block
 
-	def drawBloc(self, canvas):
-		if self.firstDraw: # If their is the first draw of the bloc
+	def drawBlock(self, canvas):
+		if self.firstDraw: # If their is the first draw of the block
 			self.display = canvas.create_rectangle(
 				self.x*BLOCK_SIZE,
 				self.y*BLOCK_SIZE,
@@ -29,7 +29,7 @@ class Block :
 class MapParser:
 	def __init__(self, source):
 		self.lines = source.split('\n') # List of all the lines
-		self._grid = [] # 2D array who contain the bloc
+		self._grid = [] # 2D array who contain the block
 
 		# Filter the void line
 		for line in range(len(self.lines)-1):
@@ -49,7 +49,7 @@ class MapParser:
 	def draw(self, canvas):
 		for y in range(len(self._grid)):
 			for x in range(len(self._grid[y])):
-				self._grid[y][x].drawBloc(canvas)
+				self._grid[y][x].drawBlock(canvas)
 
 	def __getitem__(self, index):
 		return self._grid[index]
@@ -62,6 +62,7 @@ class Player:
 	def __init__(self, gMap):
 		self.x = gMap.spawn[0]
 		self.y = gMap.spawn[1]
+		self.velocity = 0      # For simulate gravity
 		self.color = PLAYER_COLOR
 		self.firstDraw = True
 

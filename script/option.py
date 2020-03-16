@@ -22,16 +22,16 @@ MAP_SOURCE = """
 # Frame par seconde of the game
 FPS = 60 
 
-# The size of blocs in pixels
+# The size of blocks in pixels
 BLOCK_SIZE = 25
 
-# Bloc traveled by the player when arrow pressed
+# block traveled by the player when arrow pressed
 PLAYER_SPEED = 1/2
 
 # Gravity force, lower when farther to 0 (Need to define better)
 GRAVITY_FORCE = 100
 
-# Jump height of player, in bloc of height
+# Jump height of player, in block of height
 JUMP_HEIGHT = 5
 
 # Option of the windows
@@ -48,7 +48,7 @@ WIN_OPT = {
 # color defined here: http://www.tcl.tk/man/tcl8.6/TkCmd/colors.htm
 PLAYER_COLOR = "Blue"
 
-# Dict of all bloc, keys are the single char in MAP_SOURCE
+# Dict of all block, keys are the single char in MAP_SOURCE
 MAP_CHARS = {
 	"." : "void",
 	"=" : "ground",
@@ -58,8 +58,8 @@ MAP_CHARS = {
 	"+" : "plat"
 }
 
-# Color of each bloc, further the entier texture of it
-BLOC_TEXTURE = {
+# Color of each block, further the entier texture of it
+BLOCK_TEXTURE = {
 	"void" : "light blue",
 	"ground" : "green",
 	"playerspawn" : "light blue",
@@ -68,8 +68,8 @@ BLOC_TEXTURE = {
 	"plat" : "black"
 }
 
-# List of bloc who have collisions
-COLLISION_BLOC = [
+# List of block who have collisions
+COLLISION_BLOCK = [
 	"ground",
 	"dirt",
 	"plat"
