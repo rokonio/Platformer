@@ -20,7 +20,7 @@ MAP_SOURCE = """
 """
 
 # Frame par seconde of the game
-FPS = 10 
+FPS = 60 
 
 # The size of blocs in pixels
 BLOCK_SIZE = 25
