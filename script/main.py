@@ -17,9 +17,11 @@ def update():
 			else :
 				gMap[y][x].texture = BLOCK_TEXTURE[gMap[y][x].blockType]
 	applyGravity(gMap, player)
+	applyCollision(gMap, player, 0)
 	gMap.draw(can)
 	player.drawPlayer(can)
-
+	print(player.score)
+	can.focus(player.display)
 	can.after(1000//FPS, update)
 
 def pRight(event):

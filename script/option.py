@@ -11,7 +11,7 @@ MAP_SOURCE = """
 ......++++++....................++++..
 ......................................
 ......................................
-@.....................................
+@.............................U.......
 =======.......====================....
 :::::::=.....=::::::::::::::::::::==..
 ::::::::=.0.=:::::::::::::::::::::::==
@@ -29,7 +29,7 @@ BLOCK_SIZE = 25
 PLAYER_SPEED = 1/2
 
 # Gravity force, lower when farther to 0 (Need to define better)
-GRAVITY_FORCE = 100
+GRAVITY_FORCE = 80
 
 # Jump height of player, in block of height
 JUMP_HEIGHT = 5
@@ -55,7 +55,8 @@ MAP_CHARS = {
 	"@" : "playerspawn",
 	"0" : "coin",
 	":" : "dirt",
-	"+" : "plat"
+	"+" : "plat",
+	"U" : "bouncer"
 }
 
 # Color of each block, further the entier texture of it
@@ -65,7 +66,8 @@ BLOCK_TEXTURE = {
 	"playerspawn" : "light blue",
 	"coin" : "yellow",
 	"dirt" : "sienna4",
-	"plat" : "black"
+	"plat" : "black",
+	"bouncer" : "red"
 }
 
 # List of block who have collisions
@@ -74,3 +76,8 @@ COLLISION_BLOCK = [
 	"dirt",
 	"plat"
 ]
+
+INTERACTIVE_BLOCK = {
+	"bouncer" : ["bounce"],
+	"coin" : ["pop", "score+1"]
+}

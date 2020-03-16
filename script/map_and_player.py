@@ -60,6 +60,7 @@ class MapParser:
 
 class Player:
 	def __init__(self, gMap):
+		self.score = 0
 		self.x = gMap.spawn[0]
 		self.y = gMap.spawn[1]
 		self.velocity = 0      # For simulate gravity
@@ -71,8 +72,8 @@ class Player:
 			self.display = canvas.create_oval(
 				self.x*BLOCK_SIZE,
 				self.y*BLOCK_SIZE,
-				(self.x+1)*BLOCK_SIZE,
-				(self.y+1)*BLOCK_SIZE,
+				(self.x+1)*BLOCK_SIZE-1,
+				(self.y+1)*BLOCK_SIZE-1,
 				fill=self.color)
 			self.firstDraw = False
 		else :
@@ -80,5 +81,5 @@ class Player:
 			canvas.coords(self.display,
 				self.x*BLOCK_SIZE,
 				self.y*BLOCK_SIZE,
-				(self.x+1)*BLOCK_SIZE,
-				(self.y+1)*BLOCK_SIZE)
+				(self.x+1)*BLOCK_SIZE-1,
+				(self.y+1)*BLOCK_SIZE-1)
