@@ -21,7 +21,10 @@ def update():
 	gMap.draw(can)
 	player.drawPlayer(can)
 	print(player.score)
-	can.focus(player.display)
+	try :
+		can.tag_raise(player.display, can.find_all()[-1])
+	except :
+		pass
 	can.after(1000//FPS, update)
 
 def pRight(event):
