@@ -27,3 +27,7 @@ def applyCollision(gMap, player, direction):
 					elif effect == "pop":
 						gMap[y][x] = Block(x, y, ".")
 						player.score += 1
+			if gMap[y][x].y == betweenBlock2[1] and\
+					gMap[y][x].x in betweenBlock and\
+					gMap[y][x].blockType in COLLISION_BLOCK:
+				player.velocity = 0.25
