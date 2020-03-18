@@ -44,7 +44,7 @@ def pJump(event):
 	print("Jump !")
 
 def quitAll(event):
-	root.quit()
+	root.destroy()
 
 root = tk.Tk()
 can = tk.Canvas(height=len(gMap)*BLOCK_SIZE, width=len(gMap[0])*BLOCK_SIZE)
