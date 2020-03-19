@@ -14,16 +14,34 @@ class Block :
 
 	def drawBlock(self, canvas):
 		if self.firstDraw: # If their is the first draw of the block
-			self.display = canvas.create_rectangle(
-				self.x*BLOCK_SIZE,
-				self.y*BLOCK_SIZE,
-				(self.x+1)*BLOCK_SIZE,
-				(self.y+1)*BLOCK_SIZE,
-				fill=self.texture,
-				width=0)
+			self.display = []
+			for texture in self.texture :
+				if texture[0] == "rect":
+					self.display.append(canvas.create_rectangle(
+						(self.x + texture[1])*BLOCK_SIZE,
+						(self.y + texture[2])*BLOCK_SIZE,
+						(self.x + texture[3])*BLOCK_SIZE,
+						(self.y + texture[4])*BLOCK_SIZE,
+						fill = texture[5],
+						width = 0))
+				elif texture[0] == "oval":
+					self.display.append(canvas.create_oval(
+						(self.x + texture[1])*BLOCK_SIZE,
+						(self.y + texture[2])*BLOCK_SIZE,
+						(self.x + texture[3])*BLOCK_SIZE,
+						(self.y + texture[4])*BLOCK_SIZE,
+						fill = texture[5],
+						width = 0))
 			self.firstDraw = False
-		else :
-			canvas.itemconfigure(self.display, fill=self.texture)
+			self.texture2 = self.texture
+		elif self.texture == self.texture2:
+			pass
+		else : 
+			for texture in self.texture :
+				canvas.delete(texture)
+			self.firstDraw = True
+			self.drawBlock(canvas)
+			self.texture2 = self.texture
 
 
 class MapParser:

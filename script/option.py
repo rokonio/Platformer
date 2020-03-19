@@ -59,15 +59,47 @@ MAP_CHARS = {
 	"U" : "bouncer"
 }
 
-# Color of each block, further the entier texture of it
+# Texture for each block :
+#	The dict contain all the texture for all block
+#	 	The list contain all the texture for one block :
+#			Each list in it contain one texture for block :
+#				* The type of texture :
+#					* "rect" for rectangle
+#					* "oval" for oval
+#				* The two first digit are the coords of the first drawing point
+#				* The third and fourth are the coords of the second point
+#				* The last string is the color of the texture :
+#					* The avaible color is the link at line 48
+#
+#
+# Exemple :
+#		"coin" : [["rect",0,0,1,1,"light blue"],
+#				  ["oval",0,0,1,1,"yellow"]]
+#	 The first list is the sky on background :
+#		Rectangle, the first drawing point is (0,0) and the second is (1,1).
+#		The color is light blue for the sky
+#	 The second is the coin :
+#		Oval the first drawing point is (0,0) and the second is (1,1).
+#		The color is yellow like a coin
+
 BLOCK_TEXTURE = {
-	"void" : "light blue",
-	"ground" : "green",
-	"playerspawn" : "light blue",
-	"coin" : "yellow",
-	"dirt" : "sienna4",
-	"plat" : "black",
-	"bouncer" : "red"
+	"void" : [["rect", 0,0,1,1 ,"light blue"]],
+
+	"ground" : [["rect", 0,0,1,1/5,"green"],
+				["rect", 0,1/5,1,1 ,"sienna4"]],
+
+	"playerspawn" : [["rect", 0,0,1,1, "light blue"]],
+
+	"coin" : [["rect",0,0,1,1,"light blue"],
+			  ["oval",0,0,1,1,"yellow"]],
+
+	"dirt" : [["rect", 0,0,1,1, "sienna4"]],
+	
+	"plat" : [["rect",0,0,1,1,"black"]],
+
+	"bouncer" : [["rect",0,0,1,1,"light blue"],
+				 ["rect", 2/5,2/5,3/5,3/5, "red"],
+				 ["rect", 0,3/5,1,1,"red"]]
 }
 
 # List of block who have collisions
