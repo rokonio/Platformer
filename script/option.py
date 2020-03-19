@@ -4,11 +4,11 @@
 MAP_SOURCE = """
 ......................................
 ......................................
-..............+++++..............++...
+..............<+++>..............<>...
 ......................................
-+++++................+++++++..........
+<+++>................<+++++>..........
 .........0.......................0....
-......++++++....................++++..
+......<++++>....................<++>..
 ......................................
 ......................................
 @.............................U.......
@@ -56,7 +56,9 @@ MAP_CHARS = {
 	"0" : "coin",
 	":" : "dirt",
 	"+" : "plat",
-	"U" : "bouncer"
+	"U" : "bouncer",
+	"<" : "rBorder",
+	">" : "lBorder"
 }
 
 # Texture for each block :
@@ -70,6 +72,10 @@ MAP_CHARS = {
 #				* The third and fourth are the coords of the second point
 #				* The last string is the color of the texture :
 #					* The avaible color is the link at line 48
+# For polygon:
+#	 * The first string must be "polygone"
+#	 * The seconde is a list of tuple of point like this: [(0,0),(1,1),(0,1)]
+#	 * The last is the color
 #
 #
 # Exemple :
@@ -99,14 +105,22 @@ BLOCK_TEXTURE = {
 
 	"bouncer" : [["rect",0,0,1,1,"light blue"],
 				 ["rect", 2/5,2/5,3/5,3/5, "red"],
-				 ["rect", 0,3/5,1,1,"red"]]
+				 ["rect", 0,3/5,1,1,"red"]],
+
+	"rBorder" : [["rect",0,0,1,1,"light blue"],
+				 ["polygone", [(0,0),(1,1),(1,0)], "black"]],
+
+	"lBorder" : [["rect",0,0,1,1,"light blue"],
+				 ["polygone", [(0,1),(1,0),(0,0)], "black"]]
 }
 
 # List of block who have collisions
 COLLISION_BLOCK = [
 	"ground",
 	"dirt",
-	"plat"
+	"plat",
+	"rBorder",
+	"lBorder"
 ]
 
 INTERACTIVE_BLOCK = {

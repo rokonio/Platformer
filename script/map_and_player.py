@@ -32,6 +32,11 @@ class Block :
 						(self.y + texture[4])*BLOCK_SIZE,
 						fill = texture[5],
 						width = 0))
+				elif texture[0] == "polygone":
+					self.display.append(canvas.create_polygon(
+						[((self.x+x)*BLOCK_SIZE,(self.y+y)*BLOCK_SIZE) for x,y in texture[1]],
+						fill = texture[2],
+						width = 0))
 			self.firstDraw = False
 			self.texture2 = self.texture
 		elif self.texture == self.texture2:
