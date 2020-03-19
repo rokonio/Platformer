@@ -6,7 +6,14 @@ import tkinter as tk
 
 gMap = MapParser(MAP_SOURCE)
 player = Player(gMap)
-game = True
+game = False
+mPause = 0
+def firstrun():
+	global game
+	game = True
+	update()
+	game = False
+	pause("one argument");pause("one argument")
 
 def update():
 	global gMap, player, can, lab, game
@@ -50,10 +57,14 @@ def quitAll(event):
 	root.destroy()
 
 def pause(event):
-	global game
+	global game, can, mPause, player
 	if game:
+		mPause = can.create_text(int(can["width"])/3,int(can["height"])/3,text="Press 'b' to continue the game",
+			font=("Helvetica",30))
+		can.tag_raise(mPause, player.display)
 		game=False
 	else :
+		can.delete(mPause)
 		game=True
 
 root = tk.Tk()
@@ -62,11 +73,13 @@ lab.pack()
 can = tk.Canvas(root, height=len(gMap)*BLOCK_SIZE, width=len(gMap[0])*BLOCK_SIZE)
 can.pack()
 
+
 root.bind("<Left>", pLeft)
 root.bind("<Right>", pRight)
 root.bind("<Escape>", quitAll)
 root.bind("<space>", pJump)
-root.bind("<w>", pause)
+root.bind("<b>", pause)
+firstrun()
 update()
 
 root.mainloop()

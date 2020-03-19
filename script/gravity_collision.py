@@ -23,7 +23,7 @@ def applyCollision(gMap, player, direction):
 					gMap[y][x].blockType in INTERACTIVE_BLOCK.keys():
 				for effect in INTERACTIVE_BLOCK[gMap[y][x].blockType]:
 					if effect == "bounce":
-						player.velocity -= 120/GRAVITY_FORCE
+						player.velocity = -130/GRAVITY_FORCE
 					elif effect == "pop":
 						gMap[y][x] = Block(x, y, ".")
 						player.score += 1
