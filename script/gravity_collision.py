@@ -17,7 +17,7 @@ def applyCollision(gMap, player, direction):
 			if gMap[y][x].x in betweenBlock and\
 					y in betweenBlock2 and\
 					gMap[y][x].blockType in COLLISION_BLOCK:
-				player.x += direction*PLAYER_SPEED*2
+				player.x += direction*PLAYER_SPEED
 			elif gMap[y][x].x in betweenBlock and\
 					y in betweenBlock2 and\
 					gMap[y][x].blockType in INTERACTIVE_BLOCK.keys():

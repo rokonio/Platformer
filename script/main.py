@@ -39,14 +39,14 @@ def update():
 def pRight(event):
 	global player, game
 	if game :
-		applyCollision(gMap, player, -1)
 		player.x += PLAYER_SPEED
+		applyCollision(gMap, player, -1)
 
 def pLeft(event):
 	global player
 	if game:
-		applyCollision(gMap, player, 1)
 		player.x -= PLAYER_SPEED
+		applyCollision(gMap, player, 1)
 
 def pJump(event):
 	global player, game
