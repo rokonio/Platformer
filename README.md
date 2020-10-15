@@ -1,7 +1,5 @@
 # Platformer
 
-This is a platformer made in python with TKinter native graphic library. The version of python wich use is 3.8.1. This project is 
-create by a french who little speak english. Finally the editors are sublime text 3 for coding and sublime merge(whithout liscence)
-for versionning.
+This is a platformer made with TKinter. The python version used is 3.8.1 and the text editor is Sublime Text 3. This project is made by a French guy who speaks a little bit of English.
 
-Have a good day, Rokonio.
+Have a nice day
